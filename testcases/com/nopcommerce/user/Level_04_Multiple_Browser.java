@@ -35,7 +35,7 @@ public class Level_04_Multiple_Browser extends BaseTest {
 		password = "123456";
 
 		System.out.println("Precondition Step 1 : Click to Register link");
-		homePage.clickToRegisterLink();
+		homePage.openRegisterLink();
 
 		registerPage = new RegisterPageObject(driverTC);
 
@@ -57,7 +57,7 @@ public class Level_04_Multiple_Browser extends BaseTest {
 
 	@Test
 	public void Login_01_Empty_Data() {
-		homePage.clickToLoginLink();
+		homePage.openLoginLink();
 
 		loginPage = new LoginPageObject(driverTC);
 
@@ -68,7 +68,7 @@ public class Level_04_Multiple_Browser extends BaseTest {
 
 	@Test
 	public void Login_02_Invalid_Email() {
-		homePage.clickToLoginLink();
+		homePage.openLoginLink();
 
 		loginPage = new LoginPageObject(driverTC);
 

@@ -15,6 +15,13 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import pageObjects.AddressPageObject;
+import pageObjects.CustomerInfoPageObject;
+import pageObjects.OrderPageObject;
+import pageObjects.PageGeneratorManager;
+import pageObjects.RewardPointPageObject;
+import pageUIs.BasePageUI;
+
 public class BasePage {
 	public static BasePage getBasePageObject() {
 		return new BasePage();
@@ -319,6 +326,29 @@ public class BasePage {
 		explicitWait.until(ExpectedConditions.elementToBeClickable(getByXpath(xpathLocator)));
 	}
 
+	public CustomerInfoPageObject openCustomerInfoPage(WebDriver driver) {
+		waitForElementClickable(driver, BasePageUI.ADDRESS_LINK);
+		clickToElement(driver, BasePageUI.ADDRESS_LINK);
+		return PageGeneratorManager.getCustomerInfoPage(driver);
+	}
+
+	public AddressPageObject openAddressPage(WebDriver driver) {
+		waitForElementClickable(driver, BasePageUI.ADDRESS_LINK);
+		clickToElement(driver, BasePageUI.ADDRESS_LINK);
+		return PageGeneratorManager.getAddressPage(driver);
+	}
+
+	public OrderPageObject openOrderPage(WebDriver driver) {
+		waitForElementClickable(driver, BasePageUI.ORDERS_LINK);
+		clickToElement(driver, BasePageUI.ORDERS_LINK);
+		return PageGeneratorManager.getOrderPage(driver);
+	}
+
+	public RewardPointPageObject openRewardPointPage(WebDriver driver) {
+		waitForElementClickable(driver, BasePageUI.REWARD_POINT_LINK);
+		clickToElement(driver, BasePageUI.REWARD_POINT_LINK);
+		return PageGeneratorManager.getRewardPointPage(driver);
+	}
 	// private long longTimeout = 30;
 
 }
