@@ -9,24 +9,24 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
-import pageObjects.HomePageObject;
-import pageObjects.LoginPageObject;
-import pageObjects.RegisterPageObject;
+import pageObjects.nopCommerce.user.UserHomePageObject;
+import pageObjects.nopCommerce.user.UserLoginPageObject;
+import pageObjects.nopCommerce.user.UserRegisterPageObject;
 
 public class Level_04_Multiple_Browser extends BaseTest {
 	private WebDriver driverTC;
 
 	private String firstName, lastName, validEmail, invalidEmail, password;
-	private HomePageObject homePage;
-	private RegisterPageObject registerPage;
-	private LoginPageObject loginPage;
+	private UserHomePageObject homePage;
+	private UserRegisterPageObject registerPage;
+	private UserLoginPageObject loginPage;
 
 	@Parameters("browser")
 	@BeforeClass
 	public void beforeClass(String browserName) {
 		driverTC = getBrowserDriver(browserName);
 
-		homePage = new HomePageObject(driverTC);
+		homePage = new UserHomePageObject(driverTC);
 
 		firstName = "Automation";
 		lastName = "HQ";
@@ -35,9 +35,9 @@ public class Level_04_Multiple_Browser extends BaseTest {
 		password = "123456";
 
 		System.out.println("Precondition Step 1 : Click to Register link");
-		homePage.openRegisterLink();
+		homePage.openRegisterPage();
 
-		registerPage = new RegisterPageObject(driverTC);
+		registerPage = new UserRegisterPageObject(driverTC);
 
 		System.out.println("Precondition Step 2 : Input to required fields");
 		registerPage.inputToFirstnameTextbox(firstName);
@@ -51,15 +51,15 @@ public class Level_04_Multiple_Browser extends BaseTest {
 
 		System.out.println("Precondition Step 4 : Verify Register success message");
 		Assert.assertEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed");
-		homePage = new HomePageObject(driverTC);
+		homePage = new UserHomePageObject(driverTC);
 
 	}
 
 	@Test
 	public void Login_01_Empty_Data() {
-		homePage.openLoginLink();
+		homePage.openLoginPage();
 
-		loginPage = new LoginPageObject(driverTC);
+		loginPage = new UserLoginPageObject(driverTC);
 
 		loginPage.clickToLoginButton();
 
@@ -68,9 +68,9 @@ public class Level_04_Multiple_Browser extends BaseTest {
 
 	@Test
 	public void Login_02_Invalid_Email() {
-		homePage.openLoginLink();
+		homePage.openLoginPage();
 
-		loginPage = new LoginPageObject(driverTC);
+		loginPage = new UserLoginPageObject(driverTC);
 
 		loginPage.inputToEmailTextbox(invalidEmail);
 

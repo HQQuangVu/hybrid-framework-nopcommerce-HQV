@@ -8,25 +8,25 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
-import pageObjects.CustomerInfoPageObject;
-import pageObjects.HomePageObject;
-import pageObjects.LoginPageObject;
-import pageObjects.PageGeneratorManager;
-import pageObjects.RegisterPageObject;
+import commons.PageGeneratorManager;
+import pageObjects.nopCommerce.user.UserCustomerInfoPageObject;
+import pageObjects.nopCommerce.user.UserHomePageObject;
+import pageObjects.nopCommerce.user.UserLoginPageObject;
+import pageObjects.nopCommerce.user.UserRegisterPageObject;
 
 public class Level_06_Page_Generator_Manager_II extends BaseTest {
 	private WebDriver driver;
 	private String firstName, lastName, validEmail, invalidEmail, notFoundEmail, password;
-	private HomePageObject homePage;
-	private RegisterPageObject registerPage;
-	private LoginPageObject loginPage;
-	private CustomerInfoPageObject customerInfoPage;
+	private UserHomePageObject homePage;
+	private UserRegisterPageObject registerPage;
+	private UserLoginPageObject loginPage;
+	private UserCustomerInfoPageObject customerInfoPage;
 
 	@Parameters("browser")
 	@BeforeClass
 	public void beforeClass(String browserName) {
 		driver = getBrowserDriver(browserName);
-		homePage = PageGeneratorManager.getHomePage(driver);
+		homePage = PageGeneratorManager.getUserHomePage(driver);
 
 		firstName = "Automation";
 		lastName = "HQ";
@@ -36,7 +36,7 @@ public class Level_06_Page_Generator_Manager_II extends BaseTest {
 		password = "123456";
 
 		System.out.println("Precondition Step 1 : Click to Register link");
-		registerPage = homePage.openRegisterLink();
+		registerPage = homePage.openRegisterPage();
 
 		System.out.println("Precondition Step 2 : Input to required fields");
 		registerPage.inputToFirstnameTextbox(firstName);
@@ -50,13 +50,13 @@ public class Level_06_Page_Generator_Manager_II extends BaseTest {
 
 		System.out.println("Precondition Step 4 : Verify Register success message");
 		Assert.assertEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed");
-		homePage = PageGeneratorManager.getHomePage(driver);
+		homePage = PageGeneratorManager.getUserHomePage(driver);
 
 	}
 
 	@Test
 	public void Login_01_Empty_Data() {
-		loginPage = homePage.openLoginLink();
+		loginPage = homePage.openLoginPage();
 
 		loginPage.clickToLoginButton();
 
@@ -65,7 +65,7 @@ public class Level_06_Page_Generator_Manager_II extends BaseTest {
 
 	@Test
 	public void Login_02_Invalid_Email() {
-		loginPage = homePage.openLoginLink();
+		loginPage = homePage.openLoginPage();
 
 		loginPage.inputToEmailTextbox(invalidEmail);
 
@@ -77,7 +77,7 @@ public class Level_06_Page_Generator_Manager_II extends BaseTest {
 
 	@Test
 	public void Login_03_Email_Not_Found() {
-		loginPage = homePage.openLoginLink();
+		loginPage = homePage.openLoginPage();
 
 		loginPage.inputToEmailTextbox(notFoundEmail);
 
@@ -89,7 +89,7 @@ public class Level_06_Page_Generator_Manager_II extends BaseTest {
 
 	@Test
 	public void Login_04_Existing_Email_Empty_Password() {
-		loginPage = homePage.openLoginLink();
+		loginPage = homePage.openLoginPage();
 
 		loginPage.inputToEmailTextbox(validEmail);
 		loginPage.inputToPasswordTextbox("");
@@ -102,7 +102,7 @@ public class Level_06_Page_Generator_Manager_II extends BaseTest {
 
 	@Test
 	public void Login_05_Existing_Email_Incorrect_Password() {
-		loginPage = homePage.openLoginLink();
+		loginPage = homePage.openLoginPage();
 
 		loginPage.inputToEmailTextbox(validEmail);
 		loginPage.inputToPasswordTextbox("654321");
@@ -115,7 +115,7 @@ public class Level_06_Page_Generator_Manager_II extends BaseTest {
 
 	@Test
 	public void Login_06_Valid_Email_Password() {
-		loginPage = homePage.openLoginLink();
+		loginPage = homePage.openLoginPage();
 
 		loginPage.inputToEmailTextbox(validEmail);
 		loginPage.inputToPasswordTextbox(password);
@@ -124,7 +124,7 @@ public class Level_06_Page_Generator_Manager_II extends BaseTest {
 
 		Assert.assertTrue(homePage.isMyAccountLinkDisplayed());
 
-		customerInfoPage = homePage.openMyAccountLink();
+		customerInfoPage = homePage.openMyAccountPage();
 		customerInfoPage.isCustomerInfoPageDisplayed();
 	}
 
