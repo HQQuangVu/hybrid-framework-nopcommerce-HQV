@@ -6,6 +6,7 @@ import java.util.Set;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -52,7 +53,7 @@ public class BasePage {
 		driver.navigate().back();
 	}
 
-	protected void refreshCurrentPage(WebDriver driver) {
+	public void refreshCurrentPage(WebDriver driver) {
 		driver.navigate().refresh();
 	}
 
@@ -134,11 +135,11 @@ public class BasePage {
 		return locatorType;
 	}
 
-	private WebElement getWebElement(WebDriver driver, String locatorType) {
+	public WebElement getWebElement(WebDriver driver, String locatorType) {
 		return driver.findElement(getByLocator(locatorType));
 	}
 
-	private List<WebElement> getListElement(WebDriver driver, String locatorType) {
+	public List<WebElement> getListElement(WebDriver driver, String locatorType) {
 		return driver.findElements(getByLocator(locatorType));
 	}
 
@@ -205,7 +206,7 @@ public class BasePage {
 		}
 	}
 
-	protected void sleepInSecond(long time) {
+	public void sleepInSecond(long time) {
 		try {
 			Thread.sleep(time * 1000);
 		} catch (InterruptedException e) {
@@ -278,6 +279,16 @@ public class BasePage {
 	protected void hoverMouseToElement(WebDriver driver, String locatorType) {
 		Actions action = new Actions(driver);
 		action.moveToElement(getWebElement(driver, locatorType)).perform();
+	}
+
+	public void pressKeyToElement(WebDriver driver, String locatorType, Keys key) {
+		Actions action = new Actions(driver);
+		action.sendKeys(getWebElement(driver, locatorType), key).perform();
+	}
+
+	public void pressKeyToElement(WebDriver driver, String locatorType, Keys key, String... dynamicValues) {
+		Actions action = new Actions(driver);
+		action.sendKeys(getWebElement(driver, getDynamicXpath(locatorType, dynamicValues)), key).perform();
 	}
 
 	protected void scrollToBottomPage(WebDriver driver) {
@@ -356,7 +367,7 @@ public class BasePage {
 
 	protected void waitForElementVisible(WebDriver driver, String locatorType, String... dynamicValues) {
 		WebDriverWait explicitWait = new WebDriverWait(driver, longTimeout);
-		explicitWait.until(ExpectedConditions.visibilityOfElementLocated(getByLocator(locatorType)));
+		explicitWait.until(ExpectedConditions.visibilityOfElementLocated(getByLocator(getDynamicXpath(locatorType, dynamicValues))));
 	}
 
 	protected void waitForAllElementVisible(WebDriver driver, String locatorType) {
@@ -452,6 +463,6 @@ public class BasePage {
 		return PageGeneratorManager.getAdminLoginPage(driver);
 	}
 
-	private long longTimeout = 30;
+	private long longTimeout = 10;
 
 }
