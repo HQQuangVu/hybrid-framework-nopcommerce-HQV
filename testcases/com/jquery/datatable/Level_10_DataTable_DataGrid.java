@@ -17,7 +17,6 @@ public class Level_10_DataTable_DataGrid extends BaseTest {
 	private WebDriver driver;
 	HomePageObject homePage;
 	List<String> actualAllCountryValues;
-	List<String> expectedAllCountryValues;
 
 	@Parameters({ "browser", "url" })
 	@BeforeClass
@@ -27,8 +26,8 @@ public class Level_10_DataTable_DataGrid extends BaseTest {
 
 	}
 
-	@Test
 	public void Table_01_Paging() {
+		// https://www.jqueryscript.net/demo/CRUD-Data-Grid-Plugin-jQuery-Quickgrid/
 		homePage.openPagingByPageNumber("6");
 		homePage.sleepInSecond(2);
 		Assert.assertTrue(homePage.isPageNumberActivated("6"));
@@ -38,7 +37,6 @@ public class Level_10_DataTable_DataGrid extends BaseTest {
 		Assert.assertTrue(homePage.isPageNumberActivated("10"));
 	}
 
-	@Test
 	public void Table_02_Enter_To_Header() {
 		homePage.refreshCurrentPage(driver);
 
@@ -49,9 +47,31 @@ public class Level_10_DataTable_DataGrid extends BaseTest {
 		homePage.sleepInSecond(3);
 	}
 
-	@Test
-	public void Table_03() {
+	public void Table_03_Get_All_Page_Value() {
 		actualAllCountryValues = homePage.getAllPageValue();
+
+	}
+
+	@Test
+	public void Table_04_Enter_To_Textbox_At_Any_Row() {
+		// https://www.jqueryscript.net/demo/jQuery-Dynamic-Data-Grid-Plugin-appendGrid/
+		homePage.clickToLoadButton();
+		homePage.sleepInSecond(3);
+
+		homePage.enterToTextboxAtRowNumberByColumnName("Company", "1", "MichaelJ");
+		homePage.enterToTextboxAtRowNumberByColumnName("Contact Person", "2", "Jason Steward");
+
+		homePage.selectDropdownByColumnNameAndRowNumber("Country", "1", "Germany");
+		homePage.selectDropdownByColumnNameAndRowNumber("Country", "3", "Malaysia");
+		homePage.selectDropdownByColumnNameAndRowNumber("Country", "5", "United Kingdom");
+
+		homePage.checkToCheckboxByColumnAtRowNumber("NPO?", "2");
+		homePage.checkToCheckboxByColumnAtRowNumber("NPO?", "3");
+
+		homePage.uncheckToCheckboxByColumnAtRowNumber("NPO?", "1");
+		homePage.uncheckToCheckboxByColumnAtRowNumber("NPO?", "4");
+
+		homePage.clickToIconByRowNumber("1", "Remove Current Row");
 	}
 
 	@AfterClass
