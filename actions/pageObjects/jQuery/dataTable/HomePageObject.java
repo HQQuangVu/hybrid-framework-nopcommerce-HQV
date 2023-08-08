@@ -1,4 +1,4 @@
-package pageObjects.jQuery;
+package pageObjects.jQuery.dataTable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import commons.BasePage;
-import pageUIs.jQuery.HomePageUI;
+import pageUIs.jQuery.dataTable.HomePageUI;
 
 public class HomePageObject extends BasePage {
 	WebDriver driver;
@@ -36,7 +36,7 @@ public class HomePageObject extends BasePage {
 	public List<String> getAllPageValue() {
 		int totalPage = getElementSize(driver, HomePageUI.TOTAL_PAGE_NUMBER);
 		System.out.println("Total size = " + totalPage);
-		List<String> allRowValues = new ArrayList<String>();
+		List<String> allRowValues = new ArrayList<>();
 		for (int index = 1; index <= totalPage; index++) {
 			clickToElement(driver, HomePageUI.PAGINATION_PAGE_INDEX, String.valueOf(index));
 			sleepInSecond(3);

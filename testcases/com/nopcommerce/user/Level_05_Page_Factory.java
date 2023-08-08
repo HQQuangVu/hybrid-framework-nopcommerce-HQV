@@ -145,6 +145,7 @@ public class Level_05_Page_Factory extends BaseTest {
 		driver.quit();
 	}
 
+	@Override
 	public int generateFakeNumber() {
 		Random rand = new Random();
 		return rand.nextInt(9999);

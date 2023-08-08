@@ -3,7 +3,7 @@ package pageObjects.nopCommerce.user;
 import org.openqa.selenium.WebDriver;
 
 import commons.BasePage;
-import pageUIs.nopCommerce.user.BasePageUI;
+import pageUIs.nopCommerce.user.BasePageNopCommerceUI;
 
 public class UserAddressPageObject extends BasePage {
 	private WebDriver driver;
@@ -13,8 +13,8 @@ public class UserAddressPageObject extends BasePage {
 	}
 
 	public boolean isAddressPageDisplayed() {
-		waitForElementVisible(driver, BasePageUI.ADDRESS_LINK);
-		return isElementDisplayed(driver, BasePageUI.ADDRESS_LINK);
+		waitForElementVisible(driver, BasePageNopCommerceUI.ADDRESS_LINK);
+		return isElementDisplayed(driver, BasePageNopCommerceUI.ADDRESS_LINK);
 	}
 
 }

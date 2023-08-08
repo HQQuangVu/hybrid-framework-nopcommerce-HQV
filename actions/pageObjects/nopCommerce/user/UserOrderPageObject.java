@@ -3,7 +3,7 @@ package pageObjects.nopCommerce.user;
 import org.openqa.selenium.WebDriver;
 
 import commons.BasePage;
-import pageUIs.nopCommerce.user.BasePageUI;
+import pageUIs.nopCommerce.user.BasePageNopCommerceUI;
 
 public class UserOrderPageObject extends BasePage {
 	private WebDriver driver;
@@ -13,8 +13,8 @@ public class UserOrderPageObject extends BasePage {
 	}
 
 	public boolean isOrderPageDisplayed() {
-		waitForElementVisible(driver, BasePageUI.ORDERS_LINK);
-		return isElementDisplayed(driver, BasePageUI.ORDERS_LINK);
+		waitForElementVisible(driver, BasePageNopCommerceUI.ORDERS_LINK);
+		return isElementDisplayed(driver, BasePageNopCommerceUI.ORDERS_LINK);
 	}
 
 }

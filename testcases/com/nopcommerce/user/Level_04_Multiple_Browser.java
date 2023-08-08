@@ -1,6 +1,7 @@
 package com.nopcommerce.user;
 
 import java.util.Random;
+
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
@@ -85,6 +86,7 @@ public class Level_04_Multiple_Browser extends BaseTest {
 		driverTC.quit();
 	}
 
+	@Override
 	public int generateFakeNumber() {
 		Random rand = new Random();
 		return rand.nextInt(9999);
