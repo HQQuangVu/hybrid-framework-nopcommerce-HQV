@@ -14,4 +14,5 @@ public class RegisterPageUI {
 	public static final String REGISTER_SUCCESS_MESSAGE = "xpath=//div[@class='result']";
 	public static final String REGISTER_BUTTON = "xpath=//button[@id='register-button']";
 	public static final String EXISTING_EMAIL_ERROR = "xpath=//div[contains(@class,'validation-summary-errors')]//li";
+	public static final String LOG_OUT_LINK = "xpath=//a[@class='ico-logout']";
 }

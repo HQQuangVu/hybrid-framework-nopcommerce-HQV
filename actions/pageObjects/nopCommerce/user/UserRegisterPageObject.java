@@ -77,4 +77,10 @@ public class UserRegisterPageObject extends BasePage {
 		return getElementText(driver, RegisterPageUI.REGISTER_SUCCESS_MESSAGE);
 	}
 
+	public void clickToLogOutLink() {
+		if (isElementDisplayed(driver, RegisterPageUI.LOG_OUT_LINK) == true) {
+			clickToElement(driver, RegisterPageUI.LOG_OUT_LINK);
+		}
+	}
+
 }

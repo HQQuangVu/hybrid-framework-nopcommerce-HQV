@@ -35,5 +35,4 @@ public class UserHomePageObject extends BasePage {
 		clickToElement(driver, HomePageUI.MY_ACCOUNT_LINK);
 		return PageGeneratorManager.getMyAccountPage(driver);
 	}
-
 }
