@@ -13,7 +13,7 @@ import pageObjects.nopCommerce.user.UserHomePageObject;
 import pageObjects.nopCommerce.user.UserLoginPageObject;
 import pageObjects.nopCommerce.user.UserRegisterPageObject;
 
-public class Level_14_Log_ReportNG extends BaseTest {
+public class Level_17_Custom_Close_Driver extends BaseTest {
 	private WebDriver driver;
 	private String firstName, lastName, emailAddress, password;
 	private UserHomePageObject homePage;
@@ -92,8 +92,8 @@ public class Level_14_Log_ReportNG extends BaseTest {
 
 	}
 
-	@AfterClass
+	@AfterClass(alwaysRun = true)
 	public void afterClass() {
-		driver.quit();
+		closeBrowserDriver();
 	}
 }

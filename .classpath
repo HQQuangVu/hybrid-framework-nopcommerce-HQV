@@ -36,7 +36,7 @@
 	<classpathentry kind="lib" path="libWebDriverManager/slf4j-api-2.0.7.jar"/>
 	<classpathentry kind="lib" path="libWebDriverManager/webdrivermanager-5.4.0.jar"/>
 	<classpathentry kind="lib" path="libLog4j/commons-codec-1.11.jar"/>
-	<classpathentry kind="lib" path="libLog4j/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="libLog4j/commons-logging-1.2.jar" sourcepath="libLog4j/commons-logging-1.2.jar"/>
 	<classpathentry kind="lib" path="libLog4j/log4j-1.2.16.jar"/>
 	<classpathentry kind="lib" path="libReportNG/commons-collections-3.2.1.jar"/>
 	<classpathentry kind="lib" path="libReportNG/guice-3.0.jar"/>
