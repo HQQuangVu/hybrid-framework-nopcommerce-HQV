@@ -234,8 +234,12 @@ public class BasePage {
 		}
 	}
 
-	protected void getElementAttribute(WebDriver driver, String locatorType, String attributeName) {
-		getWebElement(driver, locatorType).getAttribute(attributeName);
+	protected String getElementAttribute(WebDriver driver, String locatorType, String attributeName) {
+		return getWebElement(driver, locatorType).getAttribute(attributeName);
+	}
+
+	protected String getElementAttribute(WebDriver driver, String locatorType, String attributeName, String... dynamicValues) {
+		return getWebElement(driver, getDynamicXpath(locatorType, dynamicValues)).getAttribute(attributeName);
 	}
 
 	protected String getElementCssValue(WebDriver driver, String locatorType, String propertyName) {
@@ -526,6 +530,74 @@ public class BasePage {
 		default:
 			throw new RuntimeException("Invalid Pagename at My Account sidebar");
 		}
+	}
+
+	/**
+	 * Enter to dynamic Textbox by ID
+	 * 
+	 * @param driver
+	 * @param textboxID
+	 * @param textValue
+	 */
+	public void inputToTextboxByID(WebDriver driver, String textboxID, String textValue) {
+		waitForElementVisible(driver, BasePageNopCommerceUI.DYNAMIC_TEXTBOX_BY_ID, textboxID);
+		sendkeyToElement(driver, BasePageNopCommerceUI.DYNAMIC_TEXTBOX_BY_ID, textValue, textboxID);
+	}
+
+	/**
+	 * Click to dynamic Button by Text
+	 * 
+	 * @param driver
+	 * @param buttonText
+	 */
+	public void clickToButtonByText(WebDriver driver, String buttonText) {
+		waitForElementClickable(driver, BasePageNopCommerceUI.DYNAMIC_BUTTON_BY_TEXT, buttonText);
+		clickToElement(driver, BasePageNopCommerceUI.DYNAMIC_BUTTON_BY_TEXT, buttonText);
+	}
+
+	/**
+	 * Select item in dropdown by Name attribute
+	 * 
+	 * @param driver
+	 * @param dropdownAttributeName
+	 * @param itemValue
+	 */
+	public void selectToDropdownByName(WebDriver driver, String dropdownAttributeName, String itemValue) {
+		waitForElementClickable(driver, BasePageNopCommerceUI.DYNAMIC_DROPDOWN_BY_NAME, dropdownAttributeName);
+		selectItemInDefaultDropdown(driver, BasePageNopCommerceUI.DYNAMIC_DROPDOWN_BY_NAME, itemValue, dropdownAttributeName);
+	}
+
+	/**
+	 * Click to dynamic Radio button by Label
+	 * 
+	 * @param driver
+	 * @param radioLabelName
+	 */
+	public void clickToRadioButtonByLabel(WebDriver driver, String radioLabelName) {
+		waitForElementClickable(driver, BasePageNopCommerceUI.DYNAMIC_RADIO_BUTTON_BY_LABEL, radioLabelName);
+		checkToDefaultCheckboxOrRadio(driver, BasePageNopCommerceUI.DYNAMIC_RADIO_BUTTON_BY_LABEL, radioLabelName);
+	}
+
+	/**
+	 * Click to dynamic Checkbox by Label
+	 * 
+	 * @param driver
+	 * @param checkboxLabelName
+	 */
+	public void clickToCheckboxByLabel(WebDriver driver, String checkboxLabelName) {
+		waitForElementClickable(driver, BasePageNopCommerceUI.DYNAMIC_CHECKBOX_BY_LABEL, checkboxLabelName);
+		checkToDefaultCheckboxOrRadio(driver, BasePageNopCommerceUI.DYNAMIC_CHECKBOX_BY_LABEL, checkboxLabelName);
+	}
+
+	/**
+	 * Get Attribute-value of dynamic Textbox by ID
+	 * 
+	 * @param driver
+	 * @param textboxID
+	 */
+	public String getTextboxValueByID(WebDriver driver, String textboxID) {
+		waitForElementVisible(driver, BasePageNopCommerceUI.DYNAMIC_TEXTBOX_BY_ID, textboxID);
+		return getElementAttribute(driver, BasePageNopCommerceUI.DYNAMIC_TEXTBOX_BY_ID, "value", textboxID);
 	}
 
 	public void openMyAccountPagesWithoutReturn(WebDriver driver, String pageName) {
