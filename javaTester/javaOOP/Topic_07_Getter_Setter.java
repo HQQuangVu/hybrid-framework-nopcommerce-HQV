@@ -36,4 +36,9 @@ public class Topic_07_Getter_Setter {
 	public int getPersonPhone() {
 		return personPhone;
 	}
+
+	// Getter
+	public int getPersonAge() {
+		return personAge;
+	}
 }
