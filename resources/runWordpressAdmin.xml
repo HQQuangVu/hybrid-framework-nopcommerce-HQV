@@ -2,10 +2,10 @@
 <suite  name="WordPress - Admin">
 	<listeners>
 		<listener class-name="commons.MethodListener"/>
-	<!--	<listener class-name="reportConfig.ReportNGListener"/>	-->
+		<listener class-name="reportConfig.ReportNGListener"/>	
 	<!--	<listener class-name="reportConfig.ExtentTestListener"/>-->
-        	<!--<listener class-name="org.uncommons.reportng.HTMLReporter"/>-->
-        <!--	<listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>-->
+        	<listener class-name="org.uncommons.reportng.HTMLReporter"/>
+       		<listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
 	</listeners>
 	
 	<parameter name="urlAdmin" value = "http://automationhq.net/wp-admin"/>
@@ -13,11 +13,11 @@
   
   <test name="Run on Firefox">
 	  <parameter name = "browser" value = "firefox" />
-   <!--	 <classes>
-     	 	<class name="com.nopcommerce.user.Level_18_Pattern_Object"/>
-   	 </classes>-->
-    	<packages>
-		<package name = "com.wordpress.admin"/>
-	</packages>
+  	 <classes>
+     	 	<class name="com.wordpress.posts.Post_01_Create_Post"/>
+   	 </classes>
+  <!--  	<packages>
+		<package name = "com.wordpress.posts"/>
+	</packages>-->
   </test> 
 </suite>

@@ -59,10 +59,14 @@ public class BaseTest {
 	protected WebDriver getBrowserDriver(String browserName, String appUrl) {
 		if (browserName.equals("firefox")) {
 			WebDriverManager.firefoxdriver().setup();
-			driverBaseTest = new FirefoxDriver();
+			FirefoxOptions options = new FirefoxOptions();
+			options.setAcceptInsecureCerts(true);
+			driverBaseTest = new FirefoxDriver(options);
 		} else if (browserName.equals("chrome")) {
 			WebDriverManager.chromedriver().setup();
-			driverBaseTest = new ChromeDriver();
+			ChromeOptions options = new ChromeOptions();
+			options.setAcceptInsecureCerts(true);
+			driverBaseTest = new ChromeDriver(options);
 		} else if (browserName.equals("edge")) {
 			WebDriverManager.edgedriver().setup();
 			driverBaseTest = new EdgeDriver();
@@ -184,7 +188,7 @@ public class BaseTest {
 
 	public int generateFakeNumber() {
 		Random rand = new Random();
-		return rand.nextInt(9999);
+		return rand.nextInt(99999);
 	}
 
 }
