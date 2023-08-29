@@ -25,6 +25,7 @@ import pageObjects.nopCommerce.user.UserCustomerInfoPageObject;
 import pageObjects.nopCommerce.user.UserHomePageObject;
 import pageObjects.nopCommerce.user.UserOrderPageObject;
 import pageObjects.nopCommerce.user.UserRewardPointPageObject;
+import pageObjects.wordpress.UserHomePO;
 import pageUIs.jQuery.uploadFiles.BasePageJQueryUploadUI;
 import pageUIs.nopCommerce.user.BasePageNopCommerceUI;
 
@@ -615,6 +616,11 @@ public class BasePage {
 		waitForElementClickable(driver, BasePageNopCommerceUI.ADMIN_LOGOUT_LINK);
 		clickToElement(driver, BasePageNopCommerceUI.ADMIN_LOGOUT_LINK);
 		return PageGeneratorManager.getAdminLoginPage(driver);
+	}
+
+	public UserHomePO openEndUserSite(WebDriver driver, String endUserUrl) {
+		openPageUrl(driver, endUserUrl);
+		return pageObjects.wordpress.PageGeneratorManager.getUserHomePage(driver);
 	}
 
 	private int longTimeout = 10;

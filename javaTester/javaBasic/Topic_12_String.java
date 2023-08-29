@@ -57,8 +57,10 @@ public class Topic_12_String {
 		// Handle multiple OS: Mac/ Windows (Actions - key - Ctrol / Command)
 		if (osName.toLowerCase().contains("windows")) {
 			Keys key = Keys.CONTROL;
+			System.out.println(key);
 		} else {
 			Keys key = Keys.COMMAND;
+			System.out.println(key);
 		}
 
 		// Multi Browser: toUpperCase

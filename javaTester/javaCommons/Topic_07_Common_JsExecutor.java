@@ -7,9 +7,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
 
 public class Topic_07_Common_JsExecutor {
 	WebDriver driver;
@@ -38,8 +36,7 @@ public class Topic_07_Common_JsExecutor {
 			e.printStackTrace();
 		}
 	}
-	
-	
+
 	public Object executeForBrowser(String javaScript) {
 		return jsExecutor.executeScript(javaScript);
 	}
@@ -49,8 +46,7 @@ public class Topic_07_Common_JsExecutor {
 	}
 
 	public boolean areExpectedTextInInnerText(String textExpected) {
-		String textActual = (String) jsExecutor
-				.executeScript("return document.documentElement.innerText.match('" + textExpected + "')[0];");
+		String textActual = (String) jsExecutor.executeScript("return document.documentElement.innerText.match('" + textExpected + "')[0];");
 		return textActual.equals(textExpected);
 	}
 
