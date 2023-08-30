@@ -26,4 +26,5 @@ public class UserPostDetailPO extends BasePage {
 		waitForElementVisible(driver, UserPostDetailPageUI.POST_AUTHOR_TEXT, postTitle, authorName);
 		return isElementDisplayed(driver, UserPostDetailPageUI.POST_AUTHOR_TEXT, postTitle, authorName);
 	}
+
 }

@@ -25,9 +25,19 @@ public class AdminPostAddNewPO extends BasePage {
 		sendkeyToElement(driver, AdminPostAddNewPageUI.BODY_TEXTBOX, postBodyValue);
 	}
 
-	public void clickToPublishButton() {
-		waitForElementClickable(driver, AdminPostAddNewPageUI.PUBLISH_BUTTON);
-		clickToElement(driver, AdminPostAddNewPageUI.PUBLISH_BUTTON);
+	public void enterToEditPostBody(String postBodyValue) {
+		waitForElementClickable(driver, AdminPostAddNewPageUI.BODY_TEXTBOX);
+		clickToElement(driver, AdminPostAddNewPageUI.BODY_TEXTBOX);
+
+		waitForElementVisible(driver, AdminPostAddNewPageUI.BODY_TEXTBOX);
+		clearTextUsingCtrlADelete(driver, AdminPostAddNewPageUI.BODY_TEXTBOX);
+		sleepInSecond(2);
+		sendkeyToElement(driver, AdminPostAddNewPageUI.BODY_TEXTBOX, postBodyValue);
+	}
+
+	public void clickToPublishOrUpdateButton() {
+		waitForElementClickable(driver, AdminPostAddNewPageUI.PUBLISH_OR_UPDATE_BUTTON);
+		clickToElement(driver, AdminPostAddNewPageUI.PUBLISH_OR_UPDATE_BUTTON);
 	}
 
 	public void clickToPrePublishButton() {

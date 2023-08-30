@@ -25,6 +25,7 @@ import pageObjects.nopCommerce.user.UserCustomerInfoPageObject;
 import pageObjects.nopCommerce.user.UserHomePageObject;
 import pageObjects.nopCommerce.user.UserOrderPageObject;
 import pageObjects.nopCommerce.user.UserRewardPointPageObject;
+import pageObjects.wordpress.AdminDashboardPO;
 import pageObjects.wordpress.UserHomePO;
 import pageUIs.jQuery.uploadFiles.BasePageJQueryUploadUI;
 import pageUIs.nopCommerce.user.BasePageNopCommerceUI;
@@ -181,6 +182,11 @@ public class BasePage {
 		element.sendKeys(textValue);
 	}
 
+	protected void clearTextUsingCtrlADelete(WebDriver driver, String locatorType) {
+		WebElement element = getWebElement(driver, locatorType);
+		element.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
+	}
+
 	protected void sendkeyToElement(WebDriver driver, String locatorType, String textValue, String... dynamicValues) {
 		WebElement element = getWebElement(driver, getDynamicXpath(locatorType, dynamicValues));
 		element.clear();
@@ -312,6 +318,20 @@ public class BasePage {
 	protected boolean isElementUndisplayed(WebDriver driver, String locatorType) {
 		overrideImplicitTimeout(driver, shortTimeout);
 		List<WebElement> elements = getListElement(driver, locatorType);
+		overrideImplicitTimeout(driver, longTimeout);
+
+		if (elements.isEmpty()) {
+			return true;
+		} else if (!elements.isEmpty() && !elements.get(0).isDisplayed()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	protected boolean isElementUndisplayed(WebDriver driver, String locatorType, String... dynamicValues) {
+		overrideImplicitTimeout(driver, shortTimeout);
+		List<WebElement> elements = getListElement(driver, getDynamicXpath(locatorType, dynamicValues));
 		overrideImplicitTimeout(driver, longTimeout);
 
 		if (elements.isEmpty()) {
@@ -621,6 +641,11 @@ public class BasePage {
 	public UserHomePO openEndUserSite(WebDriver driver, String endUserUrl) {
 		openPageUrl(driver, endUserUrl);
 		return pageObjects.wordpress.PageGeneratorManager.getUserHomePage(driver);
+	}
+
+	public AdminDashboardPO openAdminSite(WebDriver driver, String adminUrl) {
+		openPageUrl(driver, adminUrl);
+		return pageObjects.wordpress.PageGeneratorManager.getAdminDashboardPage(driver);
 	}
 
 	private int longTimeout = 10;
