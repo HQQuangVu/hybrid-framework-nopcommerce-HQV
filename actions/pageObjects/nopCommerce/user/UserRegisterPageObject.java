@@ -78,9 +78,11 @@ public class UserRegisterPageObject extends BasePage {
 	}
 
 	public void clickToLogOutLink() {
+		overrideImplicitTimeout(driver, 3);
 		if (isElementDisplayed(driver, RegisterPageUI.LOG_OUT_LINK) == true) {
 			clickToElement(driver, RegisterPageUI.LOG_OUT_LINK);
 		}
+		overrideImplicitTimeout(driver, 10);
 	}
 
 }
