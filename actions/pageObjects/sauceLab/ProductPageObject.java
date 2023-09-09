@@ -28,7 +28,6 @@ public class ProductPageObject extends BasePage {
 		List<WebElement> productNameText = getListElement(driver, ProductPageUI.PRODUCT_NAME_TEXT);
 		for (WebElement productName : productNameText) {
 			productUIList.add(productName.getText());
-			System.out.println("Product Name on UI: " + productName.getText());
 		}
 
 		ArrayList<String> productSortList = new ArrayList<>();
@@ -37,9 +36,6 @@ public class ProductPageObject extends BasePage {
 		}
 
 		Collections.sort(productSortList);
-		for (String productName : productSortList) {
-			System.out.println("Product Name after sort ASC" + productName);
-		}
 		return productSortList.equals(productUIList);
 	}
 
@@ -49,7 +45,6 @@ public class ProductPageObject extends BasePage {
 		List<WebElement> productNameText = getListElement(driver, ProductPageUI.PRODUCT_NAME_TEXT);
 		for (WebElement productName : productNameText) {
 			productUIList.add(productName.getText());
-			System.out.println("Product Name on UI: " + productName.getText());
 		}
 
 		ArrayList<String> productSortList = new ArrayList<String>();
@@ -58,13 +53,7 @@ public class ProductPageObject extends BasePage {
 		}
 
 		Collections.sort(productSortList);
-		for (String productName : productSortList) {
-			System.out.println("Product Name after sort ASC" + productName);
-		}
 		Collections.reverse(productSortList);
-		for (String productName : productSortList) {
-			System.out.println("Product Name after sort DESC" + productName);
-		}
 		return productSortList.equals(productUIList);
 	}
 
@@ -74,7 +63,6 @@ public class ProductPageObject extends BasePage {
 		List<WebElement> productPriceText = getListElement(driver, ProductPageUI.PRODUCT_PRICE_TEXT);
 		for (WebElement productPrice : productPriceText) {
 			productUIList.add(Float.parseFloat(productPrice.getText().replace("$", "")));
-			System.out.println("Product Price on UI" + productPrice.getText());
 		}
 
 		ArrayList<Float> productSortList = new ArrayList<Float>();
@@ -82,13 +70,7 @@ public class ProductPageObject extends BasePage {
 			productSortList.add(product);
 		}
 		Collections.sort(productSortList);
-		for (Float productPrice : productSortList) {
-			System.out.println("Product Price after sort ASC" + productPrice);
-		}
 		Collections.reverse(productSortList);
-		for (Float productPrice : productSortList) {
-			System.out.println("Product Price after sort DESC" + productPrice);
-		}
 		return productSortList.equals(productUIList);
 	}
 
@@ -98,7 +80,6 @@ public class ProductPageObject extends BasePage {
 		List<WebElement> productPriceText = getListElement(driver, ProductPageUI.PRODUCT_PRICE_TEXT);
 		for (WebElement productPrice : productPriceText) {
 			productUIList.add(Float.parseFloat(productPrice.getText().replace("$", "")));
-			System.out.println("Product Price on UI" + productPrice.getText());
 		}
 
 		ArrayList<Float> productSortList = new ArrayList<Float>();
@@ -106,9 +87,6 @@ public class ProductPageObject extends BasePage {
 			productSortList.add(product);
 		}
 		Collections.sort(productSortList);
-		for (Float productName : productSortList) {
-			System.out.println("Product Name after sort ASC" + productName);
-		}
 		return productSortList.equals(productUIList);
 	}
 }
