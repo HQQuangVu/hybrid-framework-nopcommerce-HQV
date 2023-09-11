@@ -96,7 +96,7 @@ public class BaseTest {
 
 			options.setExperimentalOption("prefs", prefs);
 			options.setExperimentalOption("useAutomationExtension", false);
-			options.setExperimentalOption("exculdeSwitches", Collections.singletonList("enable-automation"));
+			options.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
 
 			driverBaseTest = new ChromeDriver(options);
 		} else if (browserName.equals("edge")) {
