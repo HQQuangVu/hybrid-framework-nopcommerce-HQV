@@ -15,7 +15,7 @@ import pageObjects.nopCommerce.user.UserLoginPageObject;
 import pageObjects.nopCommerce.user.UserRegisterPageObject;
 import utilities.DataHelper;
 
-public class Level_20_Fake_Data extends BaseTest {
+public class Level_20_Manage_Date_Part_I extends BaseTest {
 	private WebDriver driver;
 	private String firstName, lastName, emailAddress, password;
 	private String birthDay, birthMonth, birthYear;

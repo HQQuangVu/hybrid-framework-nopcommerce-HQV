@@ -1,0 +1,13 @@
+{
+	"firstName": "Automation",
+	"lastName": "HQ",
+	"emailAddress": "automationhq",
+	"password": "123456",
+	"date": "10",
+	"month": "October",
+	"year": "1996",
+	"login":{
+		"username": "Automation",
+		"password": "123456"
+	}
+}

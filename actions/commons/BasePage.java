@@ -391,6 +391,11 @@ public class BasePage {
 		jsExecutor.executeScript("window.scrollBy(0,document.body.scrollHeight)");
 	}
 
+	protected void sendkeyToDatePickerByJS(WebDriver driver, String locatorType, String dateNumberYYMMDD) {
+		JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+		jsExecutor.executeScript("arguments[0].setAttribute('value','" + dateNumberYYMMDD + "');", getWebElement(driver, locatorType));
+	}
+
 	protected void highlightElement(WebDriver driver, String locatorType) {
 		JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
 		WebElement element = getWebElement(driver, locatorType);
