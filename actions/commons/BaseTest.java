@@ -123,6 +123,91 @@ public class BaseTest {
 		return driverBaseTest;
 	}
 
+	protected WebDriver getBrowserDriverByEnvironmentName(String browserName, String appUrl) {
+		if (browserName.equals("firefox")) {
+			WebDriverManager.firefoxdriver().setup();
+			System.setProperty(FirefoxDriver.SystemProperty.DRIVER_USE_MARIONETTE, "true");
+			System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE, GlobalConstants.PROJECT_PATH + "\\browserLogs\\FirefoxLog.log");
+
+			FirefoxOptions options = new FirefoxOptions();
+
+			options.setAcceptInsecureCerts(true);
+
+			options.addArguments("--disable-notifications");
+			options.addArguments("--disable-geolocation");
+
+			driverBaseTest = new FirefoxDriver(options);
+		} else if (browserName.equals("chrome")) {
+			WebDriverManager.chromedriver().setup();
+			System.setProperty("webdriver.chrome.args", "--disable-logging");
+			System.setProperty("webdriver.chrome.silentOutput", "true");
+
+			ChromeOptions options = new ChromeOptions();
+			Map<String, Object> prefs = new HashMap<String, Object>();
+			prefs.put("credentials_enable_service", false);
+			prefs.put("profile.password_manager_enabled", false);
+
+			options.setAcceptInsecureCerts(true);
+
+			options.addArguments("--disable-notifications");
+			options.addArguments("--disable-geolocation");
+
+			options.setExperimentalOption("prefs", prefs);
+			options.setExperimentalOption("useAutomationExtension", false);
+			options.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
+
+			driverBaseTest = new ChromeDriver(options);
+		} else if (browserName.equals("edge")) {
+			WebDriverManager.edgedriver().setup();
+			driverBaseTest = new EdgeDriver();
+		} else if (browserName.equals("h_chrome")) {
+			WebDriverManager.chromedriver().setup();
+			ChromeOptions options = new ChromeOptions();
+			options.addArguments("--headless");
+			options.addArguments("window-size=1920x1080");
+			driverBaseTest = new ChromeDriver(options);
+		} else if (browserName.equals("h_firefox")) {
+			WebDriverManager.firefoxdriver().setup();
+			FirefoxOptions options = new FirefoxOptions();
+			options.addArguments("--headless");
+			options.addArguments("window-size=1920x1080");
+			driverBaseTest = new FirefoxDriver(options);
+		} else {
+			throw new RuntimeException("Invalid browser name");
+		}
+		driverBaseTest.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
+		driverBaseTest.get(getEnvironmentUrl(appUrl));
+		// driverBaseTest.manage().window().maximize();
+		return driverBaseTest;
+	}
+
+	protected String getEnvironmentUrl(String serverName) {
+		String envUrl = null;
+		EnvironmentList environment = EnvironmentList.valueOf(serverName.toUpperCase());
+
+		switch (environment) {
+		case DEV:
+			envUrl = "https://demo.nopcommerce.com/";
+			break;
+		case TESTING:
+			envUrl = "https://testing.nopcommerce.com/";
+			break;
+		case STAGING:
+			envUrl = "https://staging.nopcommerce.com/";
+			break;
+		case PRE_PRODUCTION:
+			envUrl = "https://pre-prod.nopcommerce.com/";
+			break;
+		case PRODUCTION:
+			envUrl = "https://prod.nopcommerce.com/";
+			break;
+		default:
+			envUrl = null;
+			break;
+		}
+		return envUrl;
+	}
+
 	public WebDriver getDriverInstance() {
 		return this.driverBaseTest;
 	}
