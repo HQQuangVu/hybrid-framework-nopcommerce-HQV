@@ -7,9 +7,9 @@ public class SQLServerJTDSConnUtils {
 	public static Connection getSQLServerConnection() {
 		String hostName = "localhost";
 		String sqlInstanceName = "SQLEXPRESS";
-		String database = "automationfc";
+		String database = "automationtest";
 		String userName = "sa";
-		String password = "P@ss!!!";
+		String password = "automationhq";
 
 		return getSQLServerConnection(hostName, sqlInstanceName, database, userName, password);
 	}

@@ -1,9 +1,9 @@
-package jdbcTest;
+package utilities;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public class SQLServerConnUtils {
+public class SQLServerJTDSConnUtils {
 	public static Connection getSQLServerConnection() {
 		String hostName = "localhost";
 		String sqlInstanceName = "SQLEXPRESS";
@@ -17,10 +17,16 @@ public class SQLServerConnUtils {
 	public static Connection getSQLServerConnection(String hostName, String sqlInstanceName, String database, String userName, String password) {
 		Connection conn = null;
 		try {
-			// Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			// Khai báo class Driver cho SQLServer
+			// Việc này cần thiết với Java 5
+			// Java 6 tự động tìm kiếm Driver thích hợp - ko bắt buộc cần dòng này
+			Class.forName("net.sourceforge.jtds.jdbc.Driver");
 
 			// Cấu trúc URL Connection dành cho SQL Server
-			String connectionURL = "jdbc:sqlserver://" + hostName + ":1433" + ";instance=" + sqlInstanceName + ";databaseName=" + database;
+			// Ví dụ:
+			// jdbc:jtds:sqlserver://localhost:1433/automationfc;instance=SQLEXPRESS
+			String connectionURL = "jdbc:jtds:sqlserver://" + hostName + ":1433/" + database + ";instance=" + sqlInstanceName;
+
 			conn = DriverManager.getConnection(connectionURL, userName, password);
 		} catch (Exception e) {
 			e.printStackTrace();

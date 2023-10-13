@@ -16,7 +16,7 @@ import pageObjects.wordpress.UserHomePO;
 import pageObjects.wordpress.UserPostDetailPO;
 import pageObjects.wordpress.UserSearchPostPO;
 
-public class Post_01_Create_Post extends BaseTest {
+public class Post_01_Create_Post_Update_Delete extends BaseTest {
 
 	String adminUsername = "automationhq";
 	String adminPassword = "automationhq";
