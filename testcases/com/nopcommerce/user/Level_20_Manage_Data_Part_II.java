@@ -16,7 +16,7 @@ import pageObjects.nopCommerce.user.UserHomePageObject;
 import pageObjects.nopCommerce.user.UserLoginPageObject;
 import pageObjects.nopCommerce.user.UserRegisterPageObject;
 
-public class Level_20_Manage_Date_Part_II extends BaseTest {
+public class Level_20_Manage_Data_Part_II extends BaseTest {
 	private WebDriver driver;
 	private String emailAddress;
 	private UserHomePageObject homePage;
