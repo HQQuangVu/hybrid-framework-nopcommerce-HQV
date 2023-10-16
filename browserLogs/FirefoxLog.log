@@ -1,0 +1,14 @@
+1697376009082	geckodriver	INFO	Listening on 127.0.0.1:30915
+1697376009681	mozrunner::runner	INFO	Running command: "F:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--disable-notifications" "--disable-geolocation" "-no-remote" "-profile" "F:\\Users\\Choco\\AppData\\Local\\Temp\\rust_mozprofile7P1xf0"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1697376010099	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+console.error: "Warning: unrecognized command line flag" "-disable-notifications"
+1697376010209	Marionette	INFO	Listening on port 51851
+Read port: 51851
+1697376010424	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://demo.nopcommerce.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://demo.nopcommerce.com."
+1697376023907	Marionette	INFO	Stopped listening on port 51851
+Dynamically enable window occlusion 1

@@ -1,5 +1,5 @@
-package commons;
+package factoryEnvironment;
 
-public enum EnvironmentList {
+public enum ENVIRONMENT {
 	DEV, TESTING, STAGING, PRE_PRODUCTION, PRODUCTION;
 }
