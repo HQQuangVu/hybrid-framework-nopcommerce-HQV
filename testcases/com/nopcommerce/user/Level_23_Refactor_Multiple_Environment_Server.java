@@ -117,8 +117,9 @@ public class Level_23_Refactor_Multiple_Environment_Server extends BaseTestMulti
 		Assert.assertEquals(customerInfoPage.getTextboxValueByID(driver, "Email"), emailAddress);
 	}
 
+	@Parameters("envName")
 	@AfterClass(alwaysRun = true)
-	public void afterClass() {
-		closeBrowserDriver();
+	public void afterClass(String envName) {
+		closeBrowserDriver(envName);
 	}
 }

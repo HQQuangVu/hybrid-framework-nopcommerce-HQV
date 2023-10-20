@@ -26,7 +26,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 import org.testng.Reporter;
 
-import factoryEnvironment.ENVIRONMENT;
+import factoryEnvironment.EnvironmentList;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseTest {
@@ -237,7 +237,7 @@ public class BaseTest {
 
 	protected String getEnvironmentUrl(String serverName) {
 		String envUrl = null;
-		ENVIRONMENT environment = ENVIRONMENT.valueOf(serverName.toUpperCase());
+		EnvironmentList environment = EnvironmentList.valueOf(serverName.toUpperCase());
 
 		switch (environment) {
 		case DEV:
